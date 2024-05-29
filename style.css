@@ -1,0 +1,15 @@
+body {
+    font-family: Verdana;
+    background-color: antiquewhite;
+    margin: 24px;
+    text-align: center;
+
+}
+.__btn {
+    font-size: 30px;
+    font-weight: bold;
+    border-radius: 30px;
+    color: white;
+    background: pink;
+}
+
