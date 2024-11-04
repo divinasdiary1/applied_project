@@ -1,29 +1,89 @@
 body {
-    font-family: Verdana;
-    background-color: antiquewhite;
+    font-family: 'Verdana', sans-serif;
+    background-color: #f5f5dc; /* Soft beige background */
     margin: 24px;
     text-align: center;
-
+    color: #333; /* Dark text for better readability */
 }
-.__quiz, .__search, #loginForm, #createAccountForm {
-    font-family: sans-serif;
+
+.__quiz, .__search, #loginForm, #createAccountForm, #recommendations {
     display: inline-block;
     padding: 24px 32px;
-    border-radius: 30px;
-    background: white;
-}   
+    border-radius: 15px; /* Slightly rounded corners */
+    background: #fff; /* White background for forms */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 20px 0; /* Spacing between sections */
+}
 
 img {
     width: 350px;
     height: 350px;
+    border-radius: 15px; /* Rounded image corners */
 }
 
 .hidden {
-    display: none !important;
+    display: none !important; /* Ensure hidden elements are not displayed */
 }
 
-#auth button, #loginForm button, #createAccountForm button {
+#auth button, #loginForm button, #createAccountForm button, #searchButton, #startQuizButton, #goToSearchButton {
     padding: 10px 20px;
-    margin: 5x;
+    margin: 5px; /* Added missing semicolon */
+    border: none;
+    border-radius: 5px; /* Consistent button rounding */
     cursor: pointer;
+    background-color: #5cb85c; /* Green button */
+    color: white; /* White text */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+#auth button:hover, #loginForm button:hover, #createAccountForm button:hover, #searchButton:hover {
+    background-color: #4cae4c; /* Darker green on hover */
+    transform: scale(1.05); /* Slightly enlarges button on hover */
+}
+
+#search {
+    margin-top: 20px;
+}
+
+#searchInput {
+    padding: 10px;
+    width: 300px; /* Set a width for the input */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    transition: border-color 0.3s; /* Smooth border transition */
+}
+
+#searchInput:focus {
+    border-color: #5cb85c; /* Green border on focus */
+    outline: none; /* Remove default outline */
+}
+
+h1 {
+    color: #5cb85c; /* Main theme color for the title */
+}
+
+h3 {
+    color: #333; /* Dark text for headings */
+}
+
+#recommendations {
+    margin-top: 20px;
+}
+
+#songList {
+    list-style-type: none; /* Remove bullet points from list */
+    padding: 0; /* Remove default padding */
+}
+
+#songList li {
+    background: #e7f7e7; /* Light green background for song items */
+    margin: 5px 0; /* Spacing between items */
+    padding: 10px;
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+#songList li:hover {
+    background: #d4edda; /* Slightly darker green on hover */
 }

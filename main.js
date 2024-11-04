@@ -1,3 +1,24 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyDPpkncRU9e32CsXmZFWgFLGY4RfnYjj7o",
+    authDomain: "musicrecommendationsyste-59a49.firebaseapp.com",
+    projectId: "musicrecommendationsyste-59a49",
+    storageBucket: "musicrecommendationsyste-59a49.firebasestorage.app",
+    messagingSenderId: "361167705666",
+    appId: "1:361167705666:web:6f04fd86a1d5f2bc7dffdb",
+    measurementId: "G-WEDY7H8GQ5"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+
 document.getElementById('loginBtn').addEventListener('click', function() {
     document.getElementById('loginForm').classList.remove('hidden');
     document.getElementById('createAccountForm').classList.add('hidden');
@@ -22,10 +43,14 @@ document.getElementById('submitLogin').addEventListener('click', function() {
 
     // Simple client-side validation
     if (email && password) {
-        alert('Login successful!');
-        document.getElementById('quiz').classList.remove('hidden');
-        document.getElementById('search').classList.remove('hidden');
-        document.getElementById('loginForm').classList.add('hidden');
+        signInWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                alert('Login successful!');
+                showMainInterface();
+            })
+            .catch(error => {
+                alert(error.message); // Show error message
+            });
     } else {
         alert('Please enter both email and password.');
     }
@@ -37,14 +62,27 @@ document.getElementById('submitCreateAccount').addEventListener('click', functio
 
     // Simple client-side validation
     if (email && password) {
-        alert('Account created successfully!');
-        document.getElementById('quiz').classList.remove('hidden');
-        document.getElementById('search').classList.remove('hidden');
-        document.getElementById('createAccountForm').classList.add('hidden');
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                alert('Account created successfully!');
+                showMainInterface();
+            })
+            .catch(error => {
+                alert(error.message); // Show error message
+            });
     } else {
         alert('Please enter both email and password.');
     }
 });
+
+function showMainInterface() {
+    document.getElementById('quiz').classList.remove('hidden');
+    document.getElementById('search').classList.remove('hidden');
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('createAccountForm').classList.add('hidden');
+    document.getElementById('auth').classList.add('hidden');
+}
+
 document.getElementById('quiz').querySelector('button').addEventListener('click', function() {
     document.getElementById('quizForm').classList.remove('hidden');
     document.getElementById('quiz').classList.add('hidden');
@@ -78,6 +116,10 @@ function recommendSongs(artist, genre, lastArtist) {
         song.artist.toLowerCase().includes(lastArtist.toLowerCase())
     );
 }
+
+document.getElementById('goToSearchButton').addEventListener('click', function() {
+    document.getElementById('search').classList.remove('hidden');
+});
 
 function displayRecommendations(songs) {
     const songList = document.getElementById('songList');

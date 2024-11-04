@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html>
-<!-- setting language to english,providing encoding info, joining css-->
-<head lang="en">
-    <link rel="stylesheet" 
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
+    <title>Music Recommendation System</title>
 </head>
-<meta charset="utf-8">
-
 <body>
-
     <h1>Music Recommendation System</h1>
     <h3>Welcome to Music Maestro &#127932;</h3>
     <img src="MusicMaestro.gif" alt="creative music app logo"> 
-    <p>Discover new artists and genres of music or simply begin
-    searching your favorite song via the search bar.&#128269;</p> 
+    <p>Discover new artists and genres of music or simply begin searching your favorite song via the search bar.&#128269;</p> 
 
     <div id="auth">
         <button id="loginBtn">Log In</button>
@@ -22,15 +18,19 @@
         <button id="guestBtn">Continue as Guest</button>
     </div>
 
-    <div id ="quiz" class = "hidden">
-    <button type="button">Take Quiz</button>
-     </div>
+    <div id="quiz" class="hidden">
+        <h3>Take a Quiz</h3>    
+        <button id="startQuizButton" type="button">Start Quiz</button>
+    </div>
 
-    <div id="search" class = "hidden">
-    <button type="button">Take me to the search bar</button> 
-     </div>
+    <div id="search" class="hidden">
+        <button id="goToSearchButton" type="button">Take me to the search bar</button>
+        <h3>Search for Songs</h3>
+        <input type="text" id="searchInput" placeholder="Type song title or artist">
+        <button id="searchButton">Search</button>
+    </div>
 
-     <div id="loginForm" class="hidden">
+    <div id="loginForm" class="hidden">
         <h3>Login</h3>
         <input type="email" id="loginEmail" placeholder="Email">
         <input type="password" id="loginPassword" placeholder="Password">
@@ -63,13 +63,26 @@
         <ul id="songList"></ul>
     </div>
 
+    <script type="module" src="main.js"></script>
+    <script type="module">
+        // Import Firebase functionalities
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
 
-<!-- random comment area:
-    /
-    /
-Adding javascript to this file with script 
--->
-<script src="main.js"></script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyDPpkncRU9e32CsXmZFWgFLGY4RfnYjj7o",
+            authDomain: "musicrecommendationsyste-59a49.firebaseapp.com",
+            projectId: "musicrecommendationsyste-59a49",
+            storageBucket: "musicrecommendationsyste-59a49.firebasestorage.app",
+            messagingSenderId: "361167705666",
+            appId: "1:361167705666:web:6f04fd86a1d5f2bc7dffdb",
+            measurementId: "G-WEDY7H8GQ5"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
 </body>
-
-</html> 
+</html>
