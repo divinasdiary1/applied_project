@@ -46,21 +46,26 @@
 
     <div id="quizForm" class="hidden">
         <h3>Take Quiz</h3>
-        <label for="favoriteArtist">Who is your favorite artist?</label>
+        <label for="favoriteArtist">Favorite Artist:</label>
         <input type="text" id="favoriteArtist" placeholder="Favorite Artist"><br>
 
-        <label for="favoriteGenre">What is your favorite genre?</label>
+        <label for="favoriteGenre">Favorite Genre:</label>
         <input type="text" id="favoriteGenre" placeholder="Favorite Genre"><br>
 
-        <label for="lastArtist">What artist did you listen to last?</label>
+        <label for="lastArtist">LLast Artist You Listened To:</label>
         <input type="text" id="lastArtist" placeholder="Last Artist"><br>
 
         <button id="submitQuiz">Submit Quiz</button>
     </div>
-
+    <!-- Recommendations Section (Hidden by default)- Jaspinder -->
     <div id="recommendations" class="hidden">
-        <h3>Recommended Songs</h3>
+        <h3>Enjoy the music recommendations below</h3>
         <ul id="songList"></ul>
+    </div>
+<!-- Recommended songs will be displayed here- Jaspinder -->
+  <!-- Error message for no results found -->
+    <div id="noResults" class="hidden">
+        <p>No recommendations found based on your input.</p>
     </div>
 
     <script type="module" src="main.js"></script>
